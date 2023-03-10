@@ -1,0 +1,27 @@
+<h1>SHOW OFF</h1>
+<h2>FISHBALL SHOW PAGE</h2>
+<h2><%= @task.title %></h2>
+<h3><%= @task.description %></h3>
+<h4><%= link_to 'index page', tasks_path%></h4>
+<h3><%=  %>
+<%= link_to "Add sub_task", new_task_subtasks_path(@task) %>
+
+<table>
+    <thead>
+     <th>#</th>
+     <th> User Story</th>
+     <th> Story Point</th>
+     <th> Status</th>
+    </thead>
+    <tbody>
+        <%@task.subtasks.each do |task| %>
+        <tr>
+        <td><%= task.id%></td>
+        <td><%= task.user_story%></td>
+        <td><%= task.story_points%></td>
+        <td><%= task.status%></td>
+    </tr>
+    <%end%>
+    </tbody>
+    </table>
+
