@@ -18,8 +18,28 @@ class SubtasksController < ApplicationController
         end
     end
 
+    def edit
+        @subtask = @task.subtasks.find(params[:task_id])
+    end
+
+    def update
+        if @subtask = @task.subtasks.update(subtask_params)
+            redirect_to task_path(@task)
+        else 
+            render :edit, status: :unprocessable_entity
+        end
+    end
+    
+    def destroy
+        if @task.destroy
+            redirect_to root_path
+        else
+            "BYEBYE SUBTASK"
+        end
+    end
+
     def subtask_params
         params.required(:subtask).permit(:user_story, :story_points, :status, :task_id)
     end
-
+    
 end
