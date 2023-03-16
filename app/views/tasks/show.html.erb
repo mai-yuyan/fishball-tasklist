@@ -4,7 +4,7 @@
 <h3><%= @task.description %></h3>
 <h4><%= link_to 'index page', tasks_path%></h4>
 <h3><%=  %>
-<%= link_to "Add sub_task", new_task_subtasks_path(@task) %>
+<%= link_to "Add sub_task", new_task_subtask_path(@task) %>
 
 <table>
     <thead>
@@ -20,6 +20,8 @@
         <td><%= task.user_story%></td>
         <td><%= task.story_points%></td>
         <td><%= task.status%></td>
+        <td><%= link_to "Edit", edit_task_subtask_path(@task) %></td>
+        <td><%= button_to "Delete", task_subtask_path(@task), method: :delete%></td>
     </tr>
     <%end%>
     </tbody>
